@@ -1,4 +1,6 @@
 EmberOnRailsSampleApp::Application.routes.draw do
+  root to: "welcome#index"
+
   resources :contacts
 
   # The priority is based upon order of creation:
