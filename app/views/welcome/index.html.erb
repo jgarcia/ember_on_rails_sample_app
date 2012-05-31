@@ -16,3 +16,48 @@
 	{{/each}}
 	</table>
 </script>
+
+<script type="text/x-handlebars">
+	{{#view App.ContactForm}}
+	<div class="modal fade hide" id="contact-form">
+		<div class="modal-header">
+			<a class="close" data-dismiss="modal">×</a>
+			<h3>{{mode}} Contact</h3>
+		</div>
+		<div class="modal-body">
+			<div class="form-horizontal">
+				<div class="control-group">
+					<label class="control-label">Name:</label>
+					<div class="controls">
+						{{view Em.TextField placeholder="Name" valueBinding="editingContact.name"}}
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Email:</label>
+					<div class="controls">
+						{{view Em.TextField placeholder="Email" valueBinding="editingContact.email"}}
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Phone:</label>
+					<div class="controls">
+						{{view Em.TextField placeholder="Telephone" valueBinding="editingContact.telephone"}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn btn-primary" data-dismiss="modal" {{action save on="click"}}>Save Contact</a>
+			<a href="#" class="btn btn-inverse" data-dismiss="modal">Cancel</a>
+		</div>
+	</div>
+	{{/view}}
+</script>
+
+<%= content_for :sidebar do %>
+	<script type="text/x-handlebars">
+	{{#view App.ContactView}}
+	<a href="#contact-form" data-toggle="modal" {{action create on="click"}}>New Contact</a>
+	{{/view}}
+	</script>
+<% end %>

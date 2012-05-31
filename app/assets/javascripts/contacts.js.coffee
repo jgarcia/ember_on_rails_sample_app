@@ -17,9 +17,28 @@ App.Contact = DS.Model.extend {
 # An array controller to interact with the Store
 App.contactsController = Ember.ArrayController.create {
   content: App.store.findAll(App.Contact)
+
+  create: ->
+    App.store.createRecord App.Contact, {}
+
+  save: ->
+    App.store.commit()
 }
 
 # Client View controller
 App.ContactView = Ember.View.extend {
   tagName: "tr"
+
+  editingContactBinding: "App.contactsController.editingContact"
+
+  create: ->
+    contact = App.contactsController.create()
+    this.set "editingContact", contact
+}
+
+App.ContactForm = Ember.View.extend {
+  editingContactBinding: "App.contactsController.editingContact"
+
+  save: ->
+    App.contactsController.save()
 }
