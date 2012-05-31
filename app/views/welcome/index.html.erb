@@ -6,12 +6,16 @@
 			<th>Name</th>
 			<th>Email</th>
 			<th>Phone</th>
+			<th></th>
 		</tr>
 	{{#each App.contactsController}}
 		{{#view App.ContactView contactBinding="this"}}
 		<td>{{contact.name}}</td>
 		<td>{{contact.email}}</td>
 		<td>{{contact.telephone}}</td>
+		<td>
+			<a class="btn btn-mini btn-danger"{{action delete on="click"}}>Delete</a>
+		</td>
 		{{/view}}
 	{{/each}}
 	</table>

@@ -23,6 +23,10 @@ App.contactsController = Ember.ArrayController.create {
 
   save: ->
     App.store.commit()
+
+  delete: (contact) ->
+    contact.deleteRecord()
+    App.store.commit()
 }
 
 # Client View controller
@@ -34,6 +38,10 @@ App.ContactView = Ember.View.extend {
   create: ->
     contact = App.contactsController.create()
     this.set "editingContact", contact
+
+  delete: ->
+    contact = this.get "contact"
+    App.contactsController.delete contact
 }
 
 App.ContactForm = Ember.View.extend {
