@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require ember-0.9.8.1.min
+//= require ember-0.9.8
 //= require ember-data.min
 //= require_tree .
