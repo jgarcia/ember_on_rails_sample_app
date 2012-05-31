@@ -3,15 +3,16 @@ window.App = Ember.Application.create()
 
 # The store used to talk to the RESTful resource
 App.store = DS.Store.create {
-  revision: 4,
+  revision: 4
   adapter: DS.RESTAdapter.create { bulkCommit: false }
 }
 
 # The Model
 App.Contact = DS.Model.extend {
-  name: DS.attr('string'),
-  email: DS.attr('string'),
+  name: DS.attr('string')
+  email: DS.attr('string')
   telephone: DS.attr('string')
+  isNew: false
 }
 
 # An array controller to interact with the Store
@@ -19,7 +20,7 @@ App.contactsController = Ember.ArrayController.create {
   content: App.store.findAll(App.Contact)
 
   create: ->
-    App.store.createRecord App.Contact, {}
+    App.store.createRecord App.Contact, { isNew: true }
 
   save: ->
     App.store.commit()
@@ -54,4 +55,10 @@ App.ContactForm = Ember.View.extend {
 
   save: ->
     App.contactsController.save()
+
+  cancel: ->
+    contact = this.get "editingContact"
+    isNew = contact.get "isNew"
+    if isNew
+      App.contactsController.delete contact
 }
