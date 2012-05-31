@@ -14,6 +14,7 @@
 		<td>{{contact.email}}</td>
 		<td>{{contact.telephone}}</td>
 		<td>
+			<a data-toggle="modal" data-target="#contact-form" class="btn btn-mini btn-info"{{action edit on="click"}}>Edit</a>
 			<a class="btn btn-mini btn-danger"{{action delete on="click"}}>Delete</a>
 		</td>
 		{{/view}}

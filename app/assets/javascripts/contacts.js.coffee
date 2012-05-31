@@ -39,11 +39,16 @@ App.ContactView = Ember.View.extend {
     contact = App.contactsController.create()
     this.set "editingContact", contact
 
+  edit: ->
+    contact = this.get "contact"
+    this.set "editingContact", contact
+
   delete: ->
     contact = this.get "contact"
     App.contactsController.delete contact
 }
 
+# Client Form
 App.ContactForm = Ember.View.extend {
   editingContactBinding: "App.contactsController.editingContact"
 
